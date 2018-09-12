@@ -2,8 +2,7 @@
     $slice-innerHeight: gs-height(5) - $gs-baseline / 3;
 
     // Dealing with the double embedding of snaps
-    overflow: hidden;
-    position: relative;
+    overflow: visible;
     padding: 0;
 
     // Generic
@@ -21,6 +20,7 @@
         // this works as a min-height
         height: $gs-baseline*14;
         overflow: visible;
+        position: relative;
     }
 
     .c-football-matches {
@@ -52,7 +52,6 @@
 
     .table__caption--bottom {
         box-sizing: border-box;
-        background: $brightness-97;
         border-width: 0;
         bottom: 0;
         left: 0;
@@ -61,12 +60,19 @@
         position: absolute;
         margin: 0;
         padding: 0;
+        background-color: transparent;
 
         .full-table-link {
             display: inline-block;
         }
 
-        &:after {
+        tr {
+            background: $brightness-97;
+            display: block;
+            width: 100%;
+        }
+
+        tr:after {
             @include simple-gradient(transparent, #f6f6f6);
             height: $gs-baseline*1.5;
             border-bottom: 1px solid $brightness-86;
@@ -86,6 +92,14 @@
     .football-team__name {
         text-overflow: ellipsis;
     }
+
+    .football-match__team--home {
+        padding-right: 14px;
+    }
+    .football-match__team--away {
+        padding-left: 14px;
+    }
+
 
     .football-matches__day:last-child {
         .table__caption--bottom {
